@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini Funnel GTA Project</title>
+  
+  <!-- Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WQ2QPRZQ');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin: 0; padding: 0; }
+    section { display: none; padding: 50px; min-height: 100vh; }
+    section.active { display: block; }
+    button { padding: 15px 30px; font-size: 18px; margin: 10px; cursor: pointer; }
+    .thank-you { font-size: 28px; color: green; }
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WQ2QPRZQ"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+  <!-- End GTM noscript -->
+
+  <!-- Pantalla 1 - Landing -->
+  <section id="screen1" class="active">
+    <h1>Welcome to GTA Mini Store</h1>
+    <p>Discover the coolest items!</p>
+    <button id="shop-now">Shop Now</button>
+  </section>
+
+  <!-- Pantalla 2 - Productos -->
+  <section id="screen2">
+    <h1>Products Catalog</h1>
+    <p>Choose your favorite item</p>
+    <button id="add-to-cart">Add to Cart</button>
+  </section>
+
+  <!-- Pantalla 3 - Carrito -->
+  <section id="screen3">
+    <h1>Your Cart</h1>
+    <p>Review your products before checkout</p>
+    <button id="proceed-checkout">Proceed to Checkout</button>
+  </section>
+
+  <!-- Pantalla 4 - Checkout -->
+  <section id="screen4">
+    <h1>Checkout</h1>
+    <p>Fill in your details (simulated)</p>
+    <button id="complete-purchase">Complete Purchase</button>
+  </section>
+
+  <!-- Pantalla 5 - Thank You -->
+  <section id="screen5">
+    <h1 class="thank-you">Thank You for Your Purchase!</h1>
+    <p>Your order has been successfully placed.</p>
+  </section>
+
+  <script>
+    // Función para cambiar pantalla
+    function goToScreen(currentId, nextId) {
+      document.getElementById(currentId).classList.remove('active');
+      document.getElementById(nextId).classList.add('active');
+    }
+
+    // Eventos de botones con push a dataLayer para GA4
+    document.getElementById('shop-now').addEventListener('click', () => {
+      dataLayer.push({ event: 'shop_now_click' });
+      goToScreen('screen1', 'screen2');
+    });
+
+    document.getElementById('add-to-cart').addEventListener('click', () => {
+      dataLayer.push({ event: 'add_to_cart_click' });
+      goToScreen('screen2', 'screen3');
+    });
+
+    document.getElementById('proceed-checkout').addEventListener('click', () => {
+      dataLayer.push({ event: 'proceed_checkout_click' });
+      goToScreen('screen3', 'screen4');
+    });
+
+    document.getElementById('complete-purchase').addEventListener('click', () => {
+      dataLayer.push({ event: 'complete_purchase_click' });
+      goToScreen('screen4', 'screen5');
+    });
+  </script>
+</body>
+</html>
